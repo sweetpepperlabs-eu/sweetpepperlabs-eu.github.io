@@ -31,7 +31,7 @@ body {
 }
 
 #mainNav {
-  background-color: $white-ish !important;
+  background-color: $vanilla-grey !important;
 
   .navbar-brand {
     color: $dark-grey !important;
@@ -50,7 +50,7 @@ body {
   }
 
   .navbar-collapse {
-    background-color: $white-ish;
+    background-color: $vanilla-grey !important;
   }
 
   .nav-link {
@@ -63,11 +63,11 @@ body {
 
   // Ensure navbar stays visible on scroll
   &.is-fixed {
-    background-color: $white-ish !important;
+    background-color: $vanilla-grey !important;
   }
 
   &.is-visible {
-    background-color: $white-ish !important;
+    background-color: $vanilla-grey !important;
   }
 }
 
