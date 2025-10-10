@@ -1,2 +1,84 @@
+// Custom Color Variables
+$lime-green: #7dce94;
+$dark-grey: #3d3d3d;
+$vanilla-grey: #f6f5f3;
+$white-ish: #f9f8fd;
+
+// Override Bootstrap colors
+$primary: $lime-green;
+$secondary: $dark-grey;
+$light: $vanilla-grey;
+$body-bg: $white-ish;
+$body-color: $dark-grey;
+
+// Navbar colors
+$navbar-light-color: $dark-grey;
+$navbar-light-hover-color: $lime-green;
+$navbar-light-active-color: $lime-green;
+$navbar-light-brand-color: $dark-grey;
+$navbar-light-brand-hover-color: $lime-green;
+
+// Link colors
+$link-color: $lime-green;
+$link-hover-color: darken($lime-green, 15%);
+
 // Import Core Clean Blog SCSS
 @import "../assets/vendor/startbootstrap-clean-blog/scss/styles.scss";
+
+// Additional custom styles
+body {
+  background-color: $white-ish;
+}
+
+#mainNav {
+  background-color: $white-ish;
+
+  .navbar-brand {
+    color: $dark-grey;
+
+    &:hover {
+      color: $lime-green;
+    }
+  }
+
+  .nav-link {
+    color: $dark-grey;
+
+    &:hover {
+      color: $lime-green;
+    }
+  }
+}
+
+.masthead {
+  .page-heading,
+  .post-heading,
+  .site-heading {
+    color: $dark-grey;
+  }
+}
+
+.btn-primary {
+  background-color: $lime-green;
+  border-color: $lime-green;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($lime-green, 10%);
+    border-color: darken($lime-green, 10%);
+  }
+}
+
+footer {
+  background-color: $dark-grey;
+  color: $vanilla-grey;
+
+  a {
+    color: $lime-green;
+
+    &:hover {
+      color: lighten($lime-green, 10%);
+    }
+  }
+}
