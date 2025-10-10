@@ -31,22 +31,43 @@ body {
 }
 
 #mainNav {
-  background-color: $white-ish;
+  background-color: $white-ish !important;
 
   .navbar-brand {
-    color: $dark-grey;
+    color: $dark-grey !important;
 
     &:hover {
-      color: $lime-green;
+      color: $lime-green !important;
     }
   }
 
+  .navbar-toggler {
+    border-color: $dark-grey;
+
+    .fa-bars {
+      color: $dark-grey;
+    }
+  }
+
+  .navbar-collapse {
+    background-color: $white-ish;
+  }
+
   .nav-link {
-    color: $dark-grey;
+    color: $dark-grey !important;
 
     &:hover {
-      color: $lime-green;
+      color: $lime-green !important;
     }
+  }
+
+  // Ensure navbar stays visible on scroll
+  &.is-fixed {
+    background-color: $white-ish !important;
+  }
+
+  &.is-visible {
+    background-color: $white-ish !important;
   }
 }
 
