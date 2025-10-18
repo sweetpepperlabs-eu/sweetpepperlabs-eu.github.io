@@ -42,14 +42,5 @@ exclude:
   - .git/
   - .gitignore
 
-# Incremental build
-incremental: true
-
-# Compression
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  startings: []
-  blanklines: false
-  profile: false
+# Incremental build (disabled for production)
+incremental: false
