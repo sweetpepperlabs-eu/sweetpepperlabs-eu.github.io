@@ -25,6 +25,17 @@ $link-hover-color: darken($lime-green, 15%);
 // Import Core Clean Blog SCSS
 @import "../assets/vendor/startbootstrap-clean-blog/scss/styles.scss";
 
+// Performance optimizations
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
 // Additional custom styles
 body {
   background-color: $white-ish;
