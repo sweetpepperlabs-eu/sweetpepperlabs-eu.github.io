@@ -1,0 +1,106 @@
+---
+layout: page
+title: "404: Page Not Found"
+description: "Oops! We're still building this part..."
+permalink: /404.html
+---
+
+<style>
+  .construction-zone {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  .construction-emoji {
+    font-size: 120px;
+    animation: bounce 2s infinite;
+    display: inline-block;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .error-code {
+    font-size: 80px;
+    font-weight: bold;
+    color: #ffc107;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .funny-message {
+    font-size: 24px;
+    margin: 30px 0;
+    line-height: 1.6;
+  }
+
+  .construction-tape {
+    background: repeating-linear-gradient(
+      45deg,
+      #ffc107,
+      #ffc107 20px,
+      #000 20px,
+      #000 40px
+    );
+    height: 20px;
+    margin: 40px 0;
+    opacity: 0.8;
+  }
+
+  .back-button {
+    margin-top: 40px;
+  }
+
+  .back-button a {
+    background-color: #ffc107;
+    color: #000;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .back-button a:hover {
+    background-color: #ff9800;
+    transform: scale(1.05);
+  }
+</style>
+
+<div class="construction-zone">
+  <div class="construction-emoji">🚧</div>
+
+  <div class="error-code">404</div>
+
+  <div class="construction-tape"></div>
+
+  <div class="funny-message">
+    <p><strong>Oops! Our construction crew took a coffee break...</strong></p>
+    <p>It looks like this page is still under construction! 🔨</p>
+    <p>Or maybe our developer put it somewhere and forgot where... 🤔</p>
+    <p><em>(We promise we're working on it... probably...)</em></p>
+  </div>
+
+  <div class="construction-tape"></div>
+
+  <div class="construction-emoji" style="font-size: 60px; animation-delay: 0.5s;">👷‍♂️ 🛠️ 👷‍♀️</div>
+
+  <div class="back-button">
+    <a href="{{ site.baseurl }}/">Take Me Home</a>
+  </div>
+
+  <p style="margin-top: 30px; color: #666;">
+    <small>Pro tip: Check the URL or use the navigation menu above!</small>
+  </p>
+</div>
