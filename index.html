@@ -1,4 +1,113 @@
 ---
-layout: home
-background: '/img/bg-index.jpg'
+layout: 404
 ---
+
+<style>
+  .construction-zone {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    max-width: 800px;
+    margin: 20px;
+  }
+
+  .construction-emoji {
+    font-size: 120px;
+    animation: bounce 2s infinite;
+    display: inline-block;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .site-title {
+    font-size: 48px;
+    font-weight: bold;
+    color: #667eea;
+    margin: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .construction-message {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffc107;
+    margin: 30px 0 20px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .funny-message {
+    font-size: 20px;
+    margin: 30px 0;
+    line-height: 1.8;
+    color: #333;
+  }
+
+  .construction-tape {
+    background: repeating-linear-gradient(
+      45deg,
+      #ffc107,
+      #ffc107 20px,
+      #000 20px,
+      #000 40px
+    );
+    height: 20px;
+    margin: 40px 0;
+    opacity: 0.8;
+    border-radius: 4px;
+  }
+
+  .contact-info {
+    margin-top: 40px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    color: #666;
+  }
+
+  .contact-info a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .contact-info a:hover {
+    color: #764ba2;
+  }
+</style>
+
+<div class="construction-zone">
+  <div class="construction-emoji">🚧</div>
+
+  <div class="site-title">Sweet Pepper Labs</div>
+
+  <div class="construction-message">UNDER CONSTRUCTION</div>
+
+  <div class="construction-tape"></div>
+
+  <div class="funny-message">
+    <p><strong>We're cooking up something special! 🌶️</strong></p>
+    <p>Our team is hard at work building this site.</p>
+    <p>Check back soon for updates!</p>
+  </div>
+
+  <div class="construction-tape"></div>
+
+  <div class="construction-emoji" style="font-size: 60px; animation-delay: 0.5s;">👷‍♂️ 🛠️ 👷‍♀️</div>
+
+  <div class="contact-info">
+    <p><strong>Need to reach us?</strong></p>
+    <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+  </div>
+</div>
