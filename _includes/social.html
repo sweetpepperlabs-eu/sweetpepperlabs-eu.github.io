@@ -1,9 +1,10 @@
 <footer class="site-social">
   <div class="container">
     <ul class="social-list">
-      <li><a href="https://www.instagram.com/[INSTAGRAM HANDLE]" rel="me noopener">Instagram</a></li>
-      <li><a href="https://mastodon.social/@[HANDLE]" rel="me noopener">Mastodon</a></li>
-      <li><a href="https://www.linkedin.com/in/[LINKEDIN HANDLE]" rel="noopener">LinkedIn</a></li>
+      <li><a class="icon-link" href="https://www.linkedin.com/in/[LINKEDIN HANDLE]" rel="me noopener" aria-label="LinkedIn" title="LinkedIn">{% include icon.html name="linkedin" size=26 %}</a></li>
+      <li><a class="icon-link" href="https://mastodon.social/@[HANDLE]" rel="me noopener" aria-label="Mastodon" title="Mastodon">{% include icon.html name="mastodon" size=26 %}</a></li>
+      <li><a class="icon-link" href="https://www.instagram.com/[INSTAGRAM HANDLE]" rel="me noopener" aria-label="Instagram" title="Instagram">{% include icon.html name="instagram" size=26 %}</a></li>
+      <li><a class="icon-link" href="{{ '/contact/' | relative_url }}" aria-label="Contact" title="Contact">{% include icon.html name="envelope" size=26 %}</a></li>
     </ul>
   </div>
 </footer>
