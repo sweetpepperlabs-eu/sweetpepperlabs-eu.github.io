@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 {% include head.html %}
-
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  {% include navbar.html %}
+  {% include nav.html %}
 
-  {{ content }}
+  <main id="main" class="container py-4">
+    {{ content }}
+  </main>
 
-  {% include footer.html %}
-
-  {% include scripts.html %}
-
-  {% include google-analytics.html %}
-
+  {% include social.html %}
 </body>
-
 </html>

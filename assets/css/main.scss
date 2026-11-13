@@ -1,0 +1,128 @@
+---
+# Front matter tells Jekyll to compile this file.
+---
+
+// Bootstrap 4 is kept, compiled from the vendored source.
+@import "../vendor/bootstrap/scss/bootstrap";
+
+// ---------------------------------------------------------------
+// 1. Tokens: the five-colour palette as CSS custom properties.
+// ---------------------------------------------------------------
+:root {
+  --paper: #f7efe2;     // paper cream, page background
+  --pink: #e8a9b4;      // dusty pink
+  --mint: #b8e0cc;      // mint
+  --lavender: #c9b8e6;  // lavender
+  --mustard: #e9c46a;   // mustard
+  --ink: #2b2433;       // deep ink, all body text
+}
+
+// ---------------------------------------------------------------
+// 2. Base
+// ---------------------------------------------------------------
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+}
+
+h1, h2, h3, .page-title {
+  font-family: "Archivo Black", system-ui, sans-serif;
+}
+
+a {
+  color: var(--ink);
+  text-decoration-thickness: 2px;
+}
+
+// Visible focus on every link and button (WCAG).
+a:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  &:focus { left: 1rem; top: 1rem; background: var(--paper); padding: .5rem; }
+}
+
+// ---------------------------------------------------------------
+// 3. Layout
+// ---------------------------------------------------------------
+.site-header {
+  background: var(--mint);
+  border-bottom: 3px solid var(--ink);
+  padding: 1rem 0;
+}
+
+.site-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.25rem;
+  a { font-weight: 700; }
+}
+
+.site-nav-toggle {
+  summary { cursor: pointer; font-weight: 700; }
+  .site-nav-list { display: block; margin-top: .75rem; }
+}
+
+.site-social {
+  border-top: 3px solid var(--ink);
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+}
+
+.social-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+// ---------------------------------------------------------------
+// 4. Components
+// ---------------------------------------------------------------
+// Skeuomorphic button: outset bevel at rest, inset when pressed.
+.btn-retro {
+  display: inline-block;
+  padding: .6rem 1.2rem;
+  background: var(--mustard);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, .6), inset -2px -2px 0 rgba(0, 0, 0, .25);
+  &:active {
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, .35);
+    transform: translateY(1px);
+  }
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  li { padding: .5rem 0; border-bottom: 1px dashed var(--ink); }
+}
+
+.tag { font-weight: 700; margin-right: .25rem; }
+
+// ---------------------------------------------------------------
+// 5. Responsive
+// ---------------------------------------------------------------
+@media (min-width: 768px) {
+  .site-nav-toggle { display: none; }
+}
+
+// ---------------------------------------------------------------
+// 6. Reduced motion
+// ---------------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .btn-retro:active { transform: none; }
+}
