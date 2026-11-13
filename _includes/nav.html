@@ -9,18 +9,18 @@
     <details class="site-nav-toggle d-md-none">
       <summary>Menu</summary>
       <ul class="site-nav-list">
-        <li><a href="{{ '/' | relative_url }}">Home</a></li>
-        <li><a href="{{ '/about/' | relative_url }}">About</a></li>
-        <li><a href="{{ '/posts/' | relative_url }}">Posts</a></li>
-        <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+        <li><a href="{{ '/' | relative_url }}">{% include icon.html name="pin" %}Home</a></li>
+        <li><a href="{{ '/about/' | relative_url }}">{% include icon.html name="camera" %}About</a></li>
+        <li><a href="{{ '/posts/' | relative_url }}">{% include icon.html name="stack" %}Posts</a></li>
+        <li><a href="{{ '/contact/' | relative_url }}">{% include icon.html name="envelope" %}Contact</a></li>
       </ul>
     </details>
 
     <ul class="site-nav-list d-none d-md-flex">
-      <li><a href="{{ '/' | relative_url }}">Home</a></li>
-      <li><a href="{{ '/about/' | relative_url }}">About</a></li>
-      <li><a href="{{ '/posts/' | relative_url }}">Posts</a></li>
-      <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+      <li><a href="{{ '/' | relative_url }}">{% include icon.html name="pin" %}Home</a></li>
+      <li><a href="{{ '/about/' | relative_url }}">{% include icon.html name="camera" %}About</a></li>
+      <li><a href="{{ '/posts/' | relative_url }}">{% include icon.html name="stack" %}Posts</a></li>
+      <li><a href="{{ '/contact/' | relative_url }}">{% include icon.html name="envelope" %}Contact</a></li>
     </ul>
   </div>
 </header>

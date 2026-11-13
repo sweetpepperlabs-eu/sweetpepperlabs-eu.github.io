@@ -1,0 +1,20 @@
+{% comment %}
+  Pixel icon drawn on an 8x8 grid (viewBox 0 0 8 8).
+  Usage: {% include icon.html name="pin" size=20 %}
+  Names: pin, camera, stack, envelope, star.
+  Decorative only: always placed next to visible text.
+{% endcomment %}
+<svg class="pixel-icon" viewBox="0 0 8 8" width="{{ include.size | default: 20 }}" height="{{ include.size | default: 20 }}" aria-hidden="true" focusable="false" shape-rendering="crispEdges">
+  {% case include.name %}
+    {% when "pin" %}
+      <path fill="currentColor" d="M2 0h4v1H2zM1 1h6v1H1zM1 2h2v1H1zM5 2h2v1H5zM1 3h2v1H1zM5 3h2v1H5zM2 4h4v1H2zM3 5h2v1H3zM3 6h2v1H3z"/>
+    {% when "camera" %}
+      <path fill="currentColor" fill-rule="evenodd" d="M2 1h3v1H2zM0 2h8v4H0zM3 3h2v2H3z"/>
+    {% when "stack" %}
+      <path fill="currentColor" d="M0 0h8v2H0zM0 3h8v2H0zM0 6h8v2H0z"/>
+    {% when "envelope" %}
+      <path fill="currentColor" d="M0 1h8v1H0zM0 6h8v1H0zM0 1h1v6H0zM7 1h1v6H7zM1 2h1v1H1zM6 2h1v1H6zM2 3h1v1H2zM5 3h1v1H5zM3 4h2v1H3z"/>
+    {% when "star" %}
+      <path fill="currentColor" d="M3 0h2v1H3zM3 1h2v1H3zM1 2h6v1H1zM0 3h8v1H0zM2 4h4v1H2zM1 5h2v1H1zM5 5h2v1H5zM1 6h1v1H1zM6 6h1v1H6z"/>
+  {% endcase %}
+</svg>

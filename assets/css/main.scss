@@ -6,7 +6,10 @@
 @import "../vendor/bootstrap/scss/bootstrap";
 
 // ---------------------------------------------------------------
-// 1. Tokens: the five-colour palette as CSS custom properties.
+// 1. Tokens: palette and type as CSS custom properties.
+// Palette: five colours plus deep ink for all text.
+// Type: three families only. Press Start 2P for pixel labels,
+// Archivo for headings and body, Caveat for one script accent.
 // ---------------------------------------------------------------
 :root {
   --paper: #f7efe2;     // paper cream, page background
@@ -14,7 +17,15 @@
   --mint: #b8e0cc;      // mint
   --lavender: #c9b8e6;  // lavender
   --mustard: #e9c46a;   // mustard
-  --ink: #2b2433;       // deep ink, all body text
+  --ink: #2b2433;       // deep ink, all text
+
+  // Decorative glitch fringe only. Never used for text.
+  --glitch-a: #d6336c;
+  --glitch-b: #2a9d8f;
+
+  --font-pixel: "Press Start 2P", monospace;
+  --font-sans: "Archivo", system-ui, sans-serif;
+  --font-script: "Caveat", cursive;
 }
 
 // ---------------------------------------------------------------
@@ -23,11 +34,15 @@
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 h1, h2, h3, .page-title {
-  font-family: "Archivo Black", system-ui, sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  line-height: 1.1;
 }
 
 a {
@@ -35,7 +50,7 @@ a {
   text-decoration-thickness: 2px;
 }
 
-// Visible focus on every link and button (WCAG).
+// Visible focus on every link, summary and button (WCAG).
 a:focus-visible, summary:focus-visible {
   outline: 3px solid var(--ink);
   outline-offset: 3px;
@@ -44,16 +59,25 @@ a:focus-visible, summary:focus-visible {
 .skip-link {
   position: absolute;
   left: -999px;
-  &:focus { left: 1rem; top: 1rem; background: var(--paper); padding: .5rem; }
+  &:focus { left: 1rem; top: 1rem; background: var(--paper); padding: .5rem; z-index: 1001; }
 }
 
 // ---------------------------------------------------------------
 // 3. Layout
 // ---------------------------------------------------------------
 .site-header {
+  position: relative;
   background: var(--mint);
   border-bottom: 3px solid var(--ink);
   padding: 1rem 0;
+  // Scanlines: header only.
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(to bottom, transparent 0 2px, rgba(43, 36, 51, .07) 2px 3px);
+  }
 }
 
 .site-nav-list {
@@ -61,12 +85,16 @@ a:focus-visible, summary:focus-visible {
   margin: 0;
   padding: 0;
   gap: 1.25rem;
-  a { font-weight: 700; }
+  a {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+  }
 }
 
 .site-nav-toggle {
-  summary { cursor: pointer; font-weight: 700; }
-  .site-nav-list { display: block; margin-top: .75rem; }
+  summary { cursor: pointer; font-weight: 700; font-family: var(--font-pixel); font-size: .7rem; }
+  .site-nav-list { display: block; margin-top: .75rem; li { padding: .25rem 0; } }
 }
 
 .site-social {
@@ -82,11 +110,19 @@ a:focus-visible, summary:focus-visible {
   gap: 1.25rem;
   margin: 0;
   padding: 0;
+  a { font-weight: 700; }
 }
 
 // ---------------------------------------------------------------
 // 4. Components
 // ---------------------------------------------------------------
+// Pixel icons: inline SVG on an 8x8 grid.
+.pixel-icon {
+  flex: none;
+  vertical-align: -.15em;
+  margin-right: .4rem;
+}
+
 // Skeuomorphic button: outset bevel at rest, inset when pressed.
 .btn-retro {
   display: inline-block;
@@ -102,6 +138,65 @@ a:focus-visible, summary:focus-visible {
     box-shadow: inset 3px 3px 6px rgba(0, 0, 0, .35);
     transform: translateY(1px);
   }
+}
+
+// Pixel status badge.
+.badge-pixel {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: .3rem;
+  padding: .3rem .45rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 3px;
+  font-family: var(--font-pixel);
+  font-size: .55rem;
+  line-height: 1.4;
+}
+
+// Script accent: one word per page.
+.script-accent {
+  display: inline-block;
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1;
+  background: var(--lavender);
+  padding: .1rem .5rem;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  transform: rotate(-2deg);
+  margin: .25rem 0 1rem;
+}
+
+// Halftone dot pattern: one section only (home intro).
+.halftone {
+  background-image: radial-gradient(circle, rgba(43, 36, 51, .22) 1px, transparent 1.6px);
+  background-size: 9px 9px;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+// Glitch: a short RGB-offset on the main title, on hover and on a slow timer.
+.glitch {
+  display: inline-block;
+  animation: glitch-idle 7s steps(1) infinite;
+  &:hover { animation: glitch-hit .45s steps(3) 1; }
+}
+
+@keyframes glitch-idle {
+  0%, 91%, 100% { text-shadow: none; transform: none; }
+  92%           { text-shadow: 3px 0 var(--glitch-a), -3px 0 var(--glitch-b); transform: translateX(-1px); }
+  93%           { text-shadow: -2px 0 var(--glitch-a), 2px 0 var(--glitch-b); transform: none; }
+  94%           { text-shadow: none; }
+}
+
+@keyframes glitch-hit {
+  0%   { text-shadow: 3px 0 var(--glitch-a), -3px 0 var(--glitch-b); transform: translateX(-2px); }
+  50%  { text-shadow: -3px 1px var(--glitch-a), 3px -1px var(--glitch-b); transform: translateX(2px); }
+  100% { text-shadow: none; transform: none; }
 }
 
 .post-list {
@@ -173,25 +268,50 @@ a:focus-visible, summary:focus-visible {
 .tile-shade-2 { background: var(--lavender); }
 .tile-shade-3 { background: var(--mustard); }
 
-.tile-date { font-size: .8rem; font-weight: 700; }
-.tile-title { font-family: "Archivo Black", system-ui, sans-serif; line-height: 1.15; }
+.tile-date {
+  font-family: var(--font-pixel);
+  font-size: .55rem;
+  line-height: 1.5;
+}
+.tile-title { font-weight: 900; line-height: 1.15; }
 .tile-tags { font-size: .85rem; }
 
-@media (prefers-reduced-motion: reduce) {
-  .tile:hover { transform: none; }
+// Post detail page.
+.post-header {
+  border-bottom: 3px solid var(--ink);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+.post-title { font-size: clamp(2rem, 5vw, 3rem); }
+.post-subtitle { font-size: 1.2rem; }
+.post-meta { font-family: var(--font-pixel); font-size: .6rem; line-height: 1.8; }
+
+// ---------------------------------------------------------------
+// 5. Effects: grain texture over the whole page
+// ---------------------------------------------------------------
+.grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .08;
+  pointer-events: none;
+  z-index: 1000;
 }
 
 // ---------------------------------------------------------------
-// 5. Responsive
+// 6. Responsive
 // ---------------------------------------------------------------
 @media (min-width: 768px) {
   .site-nav-toggle { display: none; }
 }
 
 // ---------------------------------------------------------------
-// 6. Reduced motion
+// 7. Reduced motion: no animation, no hover movement
 // ---------------------------------------------------------------
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
-  .btn-retro:active { transform: none; }
+  .btn-retro:active,
+  .tile:hover { transform: none; }
+  .tile:hover { box-shadow: 4px 4px 0 var(--ink); }
 }

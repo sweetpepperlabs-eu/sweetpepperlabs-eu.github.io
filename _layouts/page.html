@@ -3,5 +3,6 @@ layout: default
 ---
 <article class="page">
   <h1 class="page-title">{{ page.title }}</h1>
+  {% if page.accent %}<p class="script-accent">{{ page.accent }}</p>{% endif %}
   {{ content }}
 </article>

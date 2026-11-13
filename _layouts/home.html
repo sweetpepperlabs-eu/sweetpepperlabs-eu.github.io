@@ -1,8 +1,9 @@
 ---
 layout: default
 ---
-<section class="intro">
-  <h1 class="page-title">{{ site.title }}</h1>
+<section class="intro halftone">
+  <h1 class="page-title glitch">{{ site.title }}</h1>
+  {% if page.accent %}<p class="script-accent">{{ page.accent }}</p>{% endif %}
   <p class="lead">{{ page.intro }}</p>
 </section>
 
@@ -12,7 +13,10 @@ layout: default
   {% assign size = post.size | default: 'small' %}
   {% assign shade = forloop.index | modulo: 4 %}
   <a class="tile tile-{{ size }} tile-shade-{{ shade }}" href="{{ post.url | relative_url }}">
-    <span class="tile-date">{{ post.date | date: '%d %b %Y' }}</span>
+    {% if forloop.first %}
+    <span class="badge-pixel">{% include icon.html name="star" size=12 %}NEW</span>
+    {% endif %}
+    <span class="tile-date">{{ post.date | date: '%d.%m.%Y' }}</span>
     <span class="tile-title">{{ post.title }}</span>
     <span class="tile-tags">{% for t in post.tags %}#{{ t }} {% endfor %}</span>
   </a>
