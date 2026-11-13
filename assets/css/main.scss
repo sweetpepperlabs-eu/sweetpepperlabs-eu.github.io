@@ -32,7 +32,7 @@
 // 1. Tokens: palette and type as CSS custom properties.
 // Palette: five colours plus deep ink for all text.
 // Type: three families only. Press Start 2P for pixel labels,
-// Archivo for headings and body, Caveat for one script accent.
+// Archivo Black for headings, Space Grotesk for body, Caveat for one script accent.
 // ---------------------------------------------------------------
 :root {
   --paper: #f7efe2;     // paper cream, page background
@@ -47,7 +47,8 @@
   --glitch-b: #2a9d8f;
 
   --font-pixel: "Press Start 2P", monospace;
-  --font-sans: "Archivo", system-ui, sans-serif;
+  --font-display: "Archivo Black", system-ui, sans-serif;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
   --font-script: "Caveat", cursive;
 }
 
@@ -63,8 +64,8 @@ body {
 }
 
 h1, h2, h3, .page-title {
-  font-family: var(--font-sans);
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-weight: 400;
   line-height: 1.1;
 }
 
@@ -325,7 +326,8 @@ a:focus-visible, summary:focus-visible {
 
 .card-title {
   font-size: 1.15rem;
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-weight: 400;
   line-height: 1.2;
   margin: 0;
 }
