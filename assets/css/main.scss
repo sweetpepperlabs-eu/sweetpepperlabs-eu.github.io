@@ -2,8 +2,31 @@
 # Front matter tells Jekyll to compile this file.
 ---
 
-// Bootstrap 4 is kept, compiled from the vendored source.
-@import "../vendor/bootstrap/scss/bootstrap";
+// Bootstrap 4 is kept, but only the parts this site uses: the full
+// bundle compiles to about 150 KB. Utility classes below replace the
+// Bootstrap utilities module, which is the bulk of that size.
+@import "../vendor/bootstrap/scss/functions";
+@import "../vendor/bootstrap/scss/variables";
+@import "../vendor/bootstrap/scss/mixins";
+@import "../vendor/bootstrap/scss/root";
+@import "../vendor/bootstrap/scss/reboot";
+@import "../vendor/bootstrap/scss/type";
+@import "../vendor/bootstrap/scss/images";
+@import "../vendor/bootstrap/scss/grid";
+
+// Utilities used in the templates, nothing more.
+.d-none { display: none !important; }
+.d-flex { display: flex !important; }
+.d-block { display: block !important; }
+.align-items-center { align-items: center !important; }
+.justify-content-between { justify-content: space-between !important; }
+.mt-4 { margin-top: 1.5rem !important; }
+.py-4 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+@media (min-width: 768px) {
+  .d-md-none { display: none !important; }
+  .d-md-block { display: block !important; }
+  .d-md-flex { display: flex !important; }
+}
 
 // ---------------------------------------------------------------
 // 1. Tokens: palette and type as CSS custom properties.
