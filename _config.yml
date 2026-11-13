@@ -17,7 +17,7 @@ email: w.molina@sweetpepperlabs.eu
 # Form endpoint for the Contact page. GitHub Pages cannot send mail by itself,
 # so the form posts to a form service (Formspree). Create a form there, set it to
 # deliver to the address above, and paste its ID here.
-contact_form_endpoint: "https://formspree.io/f/[YOUR-FORM-ID]"
+contact_form_endpoint: "https://formspree.io/f/mgakokvb"
 
 # Full public address, scheme and domain, with no trailing slash.
 # Used for absolute links, the feed and the sitemap.
