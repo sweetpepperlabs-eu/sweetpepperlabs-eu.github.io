@@ -112,6 +112,75 @@ a:focus-visible, summary:focus-visible {
 
 .tag { font-weight: 700; margin-right: .25rem; }
 
+// Tag filter chips on the Posts page.
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag-chip {
+  padding: .3rem .8rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  font-weight: 700;
+  text-decoration: none;
+  &[aria-current="page"] { background: var(--mustard); }
+}
+
+.filter-status { font-weight: 700; min-height: 1.5rem; }
+
+// Pinterest-style grid of the seven latest posts.
+// Rows are fixed height and tiles span 1 or 2 cells, with dense packing
+// so the gaps fill in.
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 150px;
+  grid-auto-flow: dense;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 170px; }
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--ink);
+  overflow: hidden;
+  &:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+}
+
+.tile-small { grid-column: span 1; grid-row: span 1; }
+.tile-tall  { grid-column: span 1; grid-row: span 2; }
+.tile-wide  { grid-column: span 2; grid-row: span 1; }
+.tile-big   { grid-column: span 2; grid-row: span 2; }
+
+// Shades cycle through the palette.
+.tile-shade-0 { background: var(--pink); }
+.tile-shade-1 { background: var(--mint); }
+.tile-shade-2 { background: var(--lavender); }
+.tile-shade-3 { background: var(--mustard); }
+
+.tile-date { font-size: .8rem; font-weight: 700; }
+.tile-title { font-family: "Archivo Black", system-ui, sans-serif; line-height: 1.15; }
+.tile-tags { font-size: .85rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tile:hover { transform: none; }
+}
+
 // ---------------------------------------------------------------
 // 5. Responsive
 // ---------------------------------------------------------------

@@ -6,6 +6,17 @@ layout: default
   <p class="lead">{{ page.intro }}</p>
 </section>
 
-<!-- Stage 2: the 7-tile masonry grid of the latest posts goes here. -->
+{% assign latest = site.posts | slice: 0, 7 %}
+<section class="grid" aria-label="Latest posts">
+  {% for post in latest %}
+  {% assign size = post.size | default: 'small' %}
+  {% assign shade = forloop.index | modulo: 4 %}
+  <a class="tile tile-{{ size }} tile-shade-{{ shade }}" href="{{ post.url | relative_url }}">
+    <span class="tile-date">{{ post.date | date: '%d %b %Y' }}</span>
+    <span class="tile-title">{{ post.title }}</span>
+    <span class="tile-tags">{% for t in post.tags %}#{{ t }} {% endfor %}</span>
+  </a>
+  {% endfor %}
+</section>
 
 <p class="mt-4"><a class="btn-retro" href="{{ '/posts/' | relative_url }}">Browse all posts</a></p>

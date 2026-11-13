@@ -1,0 +1,9 @@
+# Tags shown as filter chips on the Posts page.
+# Keep this list in sync with the `tags:` used in _posts front matter.
+- python
+- sql
+- geospatial
+- maps
+- blender
+- cavalry
+- portfolio
