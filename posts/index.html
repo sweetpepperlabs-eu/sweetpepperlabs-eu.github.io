@@ -16,12 +16,9 @@ permalink: /posts/
 
 <p id="filter-status" role="status" class="filter-status"></p>
 
-<ul class="post-list" id="post-list">
+<ul class="grid grid-compact" id="post-list" role="list">
   {% for post in site.posts %}
-  <li data-tags=" {{ post.tags | join: ' ' }} ">
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d %B %Y' }}</time>
-  </li>
+  <li data-tags=" {{ post.tags | join: ' ' }} ">{% include post-card.html %}</li>
   {% endfor %}
 </ul>
 

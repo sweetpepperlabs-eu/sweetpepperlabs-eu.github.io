@@ -1,0 +1,21 @@
+{% comment %}
+  Post card used on the home grid and the Posts page.
+  Expects a `post` variable from the calling loop. `is_new` (optional) adds the NEW badge.
+  Whole card is one link, so keyboard and screen-reader users get one stop per post.
+{% endcomment %}
+<article class="card">
+  <a class="card-link" href="{{ post.url | relative_url }}">
+    {% if post.image %}
+    <img class="card-thumb" src="{{ post.image | relative_url }}" alt="{{ post.image_alt }}" width="400" height="300" loading="lazy" decoding="async">
+    {% endif %}
+    <div class="card-body">
+      {% if is_new %}<span class="badge-pixel">{% include icon.html name="star" size=12 %}NEW</span>{% endif %}
+      <time class="card-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d.%m.%Y' }}</time>
+      <h2 class="card-title">{{ post.title }}</h2>
+      <p class="card-desc">{{ post.description }}</p>
+    </div>
+  </a>
+  {% if post.tags %}
+  <p class="card-tags">{% for t in post.tags %}<span class="tag">#{{ t }}</span> {% endfor %}</p>
+  {% endif %}
+</article>

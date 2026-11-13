@@ -2,9 +2,11 @@
 layout: post
 title: "DUMMY: a map a day, one recap"
 subtitle: "Placeholder post. Replace with the real write-up."
+description: "A month of daily maps: the tools, the hard days and the best result."
+image: /assets/img/posts/recap.svg
+image_alt: "Dummy thumbnail: mint background with a square grid"
 date: 2026-11-06 18:00:00 +0100
 tags: [maps, portfolio, python]
-size: tall
 ---
 
 This is a dummy article recapping a month of daily maps: which tools were used, what was hardest, and which map came out best.

@@ -139,6 +139,15 @@ a:focus-visible, summary:focus-visible {
 // ---------------------------------------------------------------
 // 4. Components
 // ---------------------------------------------------------------
+
+// Header logo: sized up so the wordmark reads at a glance.
+.site-brand img {
+  display: block;
+  width: auto;
+}
+.site-brand .logo-long { height: 92px; }
+.site-brand .logo-short { height: 64px; }
+
 // Pixel icons: inline SVG on an 8x8 grid.
 .pixel-icon {
   flex: none;
@@ -250,54 +259,125 @@ a:focus-visible, summary:focus-visible {
 
 .filter-status { font-weight: 700; min-height: 1.5rem; }
 
-// Pinterest-style grid of the seven latest posts.
-// Rows are fixed height and tiles span 1 or 2 cells, with dense packing
-// so the gaps fill in.
+// Equal-size card grid. Home shows seven cards; the Posts page reuses
+// the same card, with more columns and smaller thumbnails.
 .grid {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 150px;
-  grid-auto-flow: dense;
+  gap: 1.25rem;
+  @media (min-width: 768px) { grid-template-columns: repeat(4, 1fr); }
+}
+
+.grid-compact {
+  @media (min-width: 768px) { grid-template-columns: repeat(3, 1fr); }
+  @media (min-width: 1100px) { grid-template-columns: repeat(5, 1fr); }
   gap: 1rem;
-  margin-top: 2rem;
+  .card-thumb { aspect-ratio: 16 / 10; }
+  .card-title { font-size: 1rem; }
+  .card-desc { display: none; }
 }
 
-@media (min-width: 768px) {
-  .grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 170px; }
-}
-
-.tile {
+.card {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 1rem;
+  background: var(--paper);
   border: 2px solid var(--ink);
   border-radius: 6px;
-  color: var(--ink);
-  text-decoration: none;
   box-shadow: 4px 4px 0 var(--ink);
   overflow: hidden;
+  transition: transform .15s ease, box-shadow .15s ease;
   &:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
 }
 
-.tile-small { grid-column: span 1; grid-row: span 1; }
-.tile-tall  { grid-column: span 1; grid-row: span 2; }
-.tile-wide  { grid-column: span 2; grid-row: span 1; }
-.tile-big   { grid-column: span 2; grid-row: span 2; }
-
-// Shades cycle through the palette.
-.tile-shade-0 { background: var(--pink); }
-.tile-shade-1 { background: var(--mint); }
-.tile-shade-2 { background: var(--lavender); }
-.tile-shade-3 { background: var(--mustard); }
-
-.tile-date {
-  font-family: var(--font-pixel);
-  font-size: .55rem;
-  line-height: 1.5;
+.card-link {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: var(--ink);
+  text-decoration: none;
 }
-.tile-title { font-weight: 900; line-height: 1.15; }
-.tile-tags { font-size: .85rem; }
+
+.card-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-bottom: 2px solid var(--ink);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  padding: .9rem 1rem;
+}
+
+.card-date {
+  font-family: var(--font-pixel);
+  font-size: .5rem;
+  line-height: 1.6;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.card-desc { font-size: .92rem; margin: 0; }
+
+.card-tags { padding: 0 1rem 1rem; margin: 0; font-size: .8rem; }
+
+.card-link:focus-visible { outline-offset: -6px; }
+
+// Tag filter chips on the Posts page.
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tag-chip {
+  padding: .3rem .8rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  font-weight: 700;
+  text-decoration: none;
+  &[aria-current="page"] { background: var(--mustard); }
+}
+
+.filter-status { font-weight: 700; min-height: 1.5rem; }
+
+// Contact form.
+.contact-form { max-width: 36rem; margin-top: 1.5rem; }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  margin-bottom: 1.1rem;
+  label { font-weight: 700; }
+  input, textarea {
+    font: inherit;
+    color: var(--ink);
+    background: #fffdf8;
+    border: 2px solid var(--ink);
+    border-radius: 4px;
+    padding: .55rem .7rem;
+    &:focus-visible { outline: 3px solid var(--mustard); outline-offset: 2px; }
+  }
+}
+
+// Honeypot field: off-screen for people, present in the DOM for bots.
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 // Post detail page.
 .post-header {
@@ -335,6 +415,6 @@ a:focus-visible, summary:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
   .btn-retro:active,
-  .tile:hover { transform: none; }
-  .tile:hover { box-shadow: 4px 4px 0 var(--ink); }
+  .card:hover { transform: none; }
+  .card:hover { box-shadow: 4px 4px 0 var(--ink); }
 }

@@ -8,19 +8,11 @@ layout: default
 </section>
 
 {% assign latest = site.posts | slice: 0, 7 %}
-<section class="grid" aria-label="Latest posts">
+<ul class="grid" role="list" aria-label="Latest posts">
   {% for post in latest %}
-  {% assign size = post.size | default: 'small' %}
-  {% assign shade = forloop.index | modulo: 4 %}
-  <a class="tile tile-{{ size }} tile-shade-{{ shade }}" href="{{ post.url | relative_url }}">
-    {% if forloop.first %}
-    <span class="badge-pixel">{% include icon.html name="star" size=12 %}NEW</span>
-    {% endif %}
-    <span class="tile-date">{{ post.date | date: '%d.%m.%Y' }}</span>
-    <span class="tile-title">{{ post.title }}</span>
-    <span class="tile-tags">{% for t in post.tags %}#{{ t }} {% endfor %}</span>
-  </a>
+  {% assign is_new = forloop.first %}
+  <li>{% include post-card.html %}</li>
   {% endfor %}
-</section>
+</ul>
 
 <p class="mt-4"><a class="btn-retro" href="{{ '/posts/' | relative_url }}">Browse all posts</a></p>

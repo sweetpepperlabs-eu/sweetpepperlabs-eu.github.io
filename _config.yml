@@ -6,13 +6,18 @@
 title: sweetpepperlabs
 
 # Short description used for the meta description and the header subtitle.
-description: "Weekly projects, maps and experiments by [YOUR NAME]."
+description: "Projects, maps and experiments by [YOUR NAME], published as they happen."
 
 # Author name used for post bylines. Kept as the GitHub username on purpose.
 author: lebuu_eu
 
-# Contact address used by the mailto link on the Contact page.
+# Contact address shown on the Contact page and used as the form recipient.
 email: w.molina@sweetpepperlabs.eu
+
+# Form endpoint for the Contact page. GitHub Pages cannot send mail by itself,
+# so the form posts to a form service (Formspree). Create a form there, set it to
+# deliver to the address above, and paste its ID here.
+contact_form_endpoint: "https://formspree.io/f/[YOUR-FORM-ID]"
 
 # Full public address, scheme and domain, with no trailing slash.
 # Used for absolute links, the feed and the sitemap.

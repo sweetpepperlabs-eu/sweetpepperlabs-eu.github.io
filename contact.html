@@ -5,6 +5,31 @@ accent: "say hi"
 permalink: /contact/
 ---
 
-<p>Got a question, an idea, or something to share? Write to me any time.</p>
+<p>Got a question, an idea, or something to share? Send a message and it lands in my inbox.</p>
 
-<p><a class="btn-retro" href="mailto:{{ site.email }}">{% include icon.html name="envelope" %}Email {{ site.email }}</a></p>
+<form class="contact-form" action="{{ site.contact_form_endpoint }}" method="POST">
+  <!-- Honeypot: hidden from people, filled in only by spam bots. -->
+  <p class="hp" aria-hidden="true">
+    <label>Leave this field empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+  </p>
+
+  <div class="field">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" autocomplete="name" required>
+  </div>
+
+  <div class="field">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" autocomplete="email" required>
+  </div>
+
+  <div class="field">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
+  </div>
+
+  <input type="hidden" name="_subject" value="New message from sweetpepperlabs.eu">
+  <button type="submit" class="btn-retro">Send message</button>
+</form>
+
+<p class="mt-4">Prefer email? Write to <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
