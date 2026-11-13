@@ -14,7 +14,7 @@ permalink: /contact/
   <p>Our chief lab technician will contact you soon!</p>
 </div>
 
-<form class="contact-form" action="{{ site.contact_form_endpoint }}" method="POST">
+<form class="contact-form" id="contact-form" action="{{ site.contact_form_endpoint }}" method="POST">
   <!-- After sending, Formspree returns the visitor to this page. -->
   <input type="hidden" name="_next" value="{{ '/contact/#sent' | absolute_url }}">
   <!-- Honeypot: hidden from people, filled in only by spam bots. -->
@@ -46,3 +46,5 @@ permalink: /contact/
 </form>
 
 <p class="mt-4">Prefer email? Write to <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+
+<script src="{{ '/assets/js/contact.js' | relative_url }}" defer></script>

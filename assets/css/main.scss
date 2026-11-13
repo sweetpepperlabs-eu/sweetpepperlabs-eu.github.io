@@ -390,7 +390,8 @@ a:focus-visible, summary:focus-visible {
   border: 2px solid var(--ink);
   border-radius: 6px;
   box-shadow: 4px 4px 0 var(--ink);
-  &:target { display: block; }
+  &:target,
+  &.is-visible { display: block; }
   p { margin: 0; }
   .form-sent-title { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: .25rem; }
 }
