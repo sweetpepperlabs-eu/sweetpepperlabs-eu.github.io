@@ -7,7 +7,16 @@ permalink: /contact/
 
 <p>Got a question, an idea, or something to share? Send a message and it lands in my inbox.</p>
 
+<!-- Shown after a successful send: Formspree redirects here with #sent (see _next below).
+     Works without JavaScript because the browser highlights the element whose id matches the fragment. -->
+<div id="sent" class="form-sent" role="status" tabindex="-1">
+  <p class="form-sent-title">Thanks!</p>
+  <p>The labs will contact you soon.</p>
+</div>
+
 <form class="contact-form" action="{{ site.contact_form_endpoint }}" method="POST">
+  <!-- After sending, Formspree returns the visitor to this page. -->
+  <input type="hidden" name="_next" value="{{ '/contact/#sent' | absolute_url }}">
   <!-- Honeypot: hidden from people, filled in only by spam bots. -->
   <p class="hp" aria-hidden="true">
     <label>Leave this field empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
